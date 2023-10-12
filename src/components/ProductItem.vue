@@ -26,7 +26,7 @@ const props = defineProps({
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="fs-3 my-2">
                         <span class="badge bg-danger">
-                            &#x20B9; {{ props.product.price }}
+                            &#x20B9;. {{ props.product.price }}/-
                         </span>
                     </p>
                     <button class="btn btn-outline-primary">
