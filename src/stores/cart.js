@@ -36,8 +36,6 @@ export const useCartStore = defineStore('cart', {
             },
         ],
     }),
-    getters: {
-        getProducts: (state) => state.products,
-    },
+    getters: {},
     actions: {},
 })
