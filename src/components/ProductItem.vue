@@ -3,7 +3,7 @@ import { useCartStore } from '@/stores/cart'
 
 const store = useCartStore()
 
-const props = defineProps({
+defineProps({
     product: {
         type: Object,
         required: true,
@@ -15,13 +15,13 @@ const props = defineProps({
     <div class="col-md-4 mb-2">
         <div class="card">
             <img
-                :src="props.product.image"
-                alt="props.product.name"
+                :src="product.image"
+                alt="product.name"
                 class="card-img-top"
             />
             <div class="card-body">
                 <h5 class="card-title">
-                    {{ props.product.name }}
+                    {{ product.name }}
                 </h5>
                 <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -30,12 +30,12 @@ const props = defineProps({
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="fs-3 my-2">
                         <span class="badge bg-danger">
-                            &#x20B9;. {{ props.product.price }}/-
+                            &#x20B9;. {{ product.price }}/-
                         </span>
                     </p>
                     <button
                         class="btn btn-outline-primary"
-                        @click="store.addToCart(props.product)"
+                        @click="store.addToCart(product)"
                     >
                         <i class="bi bi-cart-check"></i>
                         Add to Cart
