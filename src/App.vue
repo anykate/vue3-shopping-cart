@@ -1,9 +1,10 @@
-<script setup></script>
-
 <template>
-    <div class="container">
-        <router-view />
-    </div>
+    <router-view />
 </template>
 
-<style></style>
+<style>
+body {
+    min-height: 75rem;
+    padding-top: 4rem;
+}
+</style>

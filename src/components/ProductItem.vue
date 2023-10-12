@@ -1,4 +1,8 @@
 <script setup>
+import { useCartStore } from '@/stores/cart'
+
+const store = useCartStore()
+
 const props = defineProps({
     product: {
         type: Object,
@@ -29,7 +33,10 @@ const props = defineProps({
                             &#x20B9;. {{ props.product.price }}/-
                         </span>
                     </p>
-                    <button class="btn btn-outline-primary">
+                    <button
+                        class="btn btn-outline-primary"
+                        @click="store.addToCart(props.product)"
+                    >
                         <i class="bi bi-cart-check"></i>
                         Add to Cart
                     </button>

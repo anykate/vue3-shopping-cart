@@ -1,4 +1,7 @@
 import { defineStore } from 'pinia'
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
 
 export const useCartStore = defineStore('cart', {
     // state: () => {
@@ -35,7 +38,33 @@ export const useCartStore = defineStore('cart', {
                 image: '/images/huwawei.jpg',
             },
         ],
+        cartItems: [],
     }),
-    getters: {},
-    actions: {},
+    getters: {
+        countCartItems(state) {
+            return state.cartItems.length
+        },
+        getCartItems(state) {
+            return state.cartItems
+        },
+    },
+    actions: {
+        addToCart(item) {
+            let index = this.cartItems.findIndex(
+                (product) => product.id === item.id
+            )
+
+            if (index != -1) {
+                this.cartItems[index].quantity += 1
+                toast.info("Your item's quantity  has been updated!", {
+                    timeout: 3000,
+                })
+            } else {
+                this.cartItems.push({ ...item, quantity: 1 })
+                toast.info('Your item has been added to cart!', {
+                    timeout: 3000,
+                })
+            }
+        },
+    },
 })
