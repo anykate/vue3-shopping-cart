@@ -22,9 +22,8 @@ const store = useCartStore()
                                     <th>Subtotal</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody v-if="store.countCartItems >= 1">
                                 <tr
-                                    v-if="store.countCartItems >= 1"
                                     v-for="(item, index) in store.getCartItems"
                                     :key="item.id"
                                 >
@@ -48,13 +47,13 @@ const store = useCartStore()
                                     <td>
                                         <div class="d-flex gap-2 fs-5">
                                             <i
-                                                @click="store.incrementQ(item)"
                                                 class="bi bi-plus-circle-fill"
+                                                @click="store.incrementQ(item)"
                                             ></i>
                                             {{ item.quantity }}
                                             <i
-                                                @click="store.decrementQ(item)"
                                                 class="bi bi-dash-circle-fill"
+                                                @click="store.decrementQ(item)"
                                             ></i>
                                         </div>
                                     </td>
@@ -65,7 +64,9 @@ const store = useCartStore()
                                         {{ item.price * item.quantity }}
                                     </td>
                                 </tr>
-                                <tr v-else>
+                            </tbody>
+                            <tbody v-else>
+                                <tr>
                                     <td
                                         colspan="7"
                                         class="text-center text-danger fs-4 fw-bold"
